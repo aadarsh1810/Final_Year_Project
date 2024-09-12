@@ -22,4 +22,6 @@ The benchmark dataset created for this project is available in the `data/process
 - **BERT (Bidirectional Encoder Representations from Transformers):** A state-of-the-art transformer-based model for text categorization.
 - **LSTM (Long Short-Term Memory):** Recurrent neural network architecture used for text sequence classification.
 
+## MLOPS WORKFLOW
+
 
