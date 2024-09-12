@@ -23,5 +23,6 @@ The benchmark dataset created for this project is available in the `data/process
 - **LSTM (Long Short-Term Memory):** Recurrent neural network architecture used for text sequence classification.
 
 ## MLOPS WORKFLOW
+![Alt text](https://github.com/aadarsh1810/Final_Year_Project/blob/main/MLOps%20Workflow.png)
 
 
