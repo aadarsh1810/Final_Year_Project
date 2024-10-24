@@ -1,0 +1,43 @@
+# azure-pipelines.yml
+trigger:
+  branches:
+    include:
+      - main  
+
+pool:
+  vmImage: 'ubuntu-latest'  # (windows-latest)
+
+variables:
+  - group: 'MLOps_Project-vg'  
+
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildJob
+        steps:
+          - checkout: self  
+          - script: |
+              echo "Building the project"
+              echo "Base Name: $(BASE_NAME)"
+              echo "Location: $(LOCATION)"
+              echo "Resource Group: $(RESOURCE_GROUP)"
+              echo "Workspace Name: $(WORKSPACE_NAME)"
+            displayName: 'Build the project'
+
+  - stage: Deploy
+    jobs:
+      - job: DeployJob
+        steps:
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: $(AZURE_RM_SVC_CONNECTION)
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                echo "Deploying to Azure with the following details:"
+                echo "Base Name: $(BASE_NAME)"
+                echo "Location: $(LOCATION)"
+                echo "Resource Group: $(RESOURCE_GROUP)"
+                echo "Workspace Name: $(WORKSPACE_NAME)"
+                # You can add Azure CLI commands here to deploy your resources.
+            displayName: 'Deploy resources to Azure'
